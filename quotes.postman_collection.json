@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "121d3a1a-2a5f-4334-8c3c-39137d5538f9",
+		"name": "quotes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "quoteswithsymbol",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5242113d-fd70-4488-892f-7d5ca13d3ede",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:4443/quotes/s:201",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4443",
+					"path": [
+						"quotes",
+						"s:201"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatingnewQuoteSymbol",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c8c06ded-3c1b-45b3-a688-4a8c90005f60",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"symbol\": \"s:2002\",\r\n    \"companyName\": \"S2002 Incorporated\",\r\n    \"volume\": 33.0,\r\n    \"price\": 18.43,\r\n    \"low\": 19.00,\r\n    \"high\": 19.00,\r\n    \"open\": 19.00,\r\n    \"change\": -0.57\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:4443/quotes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "4443",
+					"path": [
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
